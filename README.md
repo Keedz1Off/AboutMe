@@ -1,30 +1,129 @@
-# About Me
+# Stefan | Smart Contract Security Researcher
 
-I am a junior smart contract security researcher looking for real-world experience in Web3 security.
+![Cross-chain bridge security portfolio](assets/bridge-security-portfolio-banner.png)
 
-My main focus is bridge security, cross-chain message flows, and L1/L2 architecture. I trace complete protocol flows, define security invariants, verify their protections in code, and prepare PoC ideas for suspicious behavior.
+I am a junior smart contract security researcher focused on **bridge security, cross-chain message flows, and L1/L2 architecture**.
 
-## Current Contest Review
+I trace complete protocol flows, define security invariants, verify their protections directly in code, and prepare PoC ideas for suspicious behavior. I am currently looking for a junior role, internship, contest collaboration, or an opportunity to contribute to a security team.
 
-### Push Chain Gateway
-
-I am conducting an independent, contest-oriented review of the Push Chain EVM Gateway scope.
-
-The review covers:
+## Security Focus
 
 ```text
-UniversalGateway source flow
-transaction type detection and routing
-native and ERC20 deposits
-rate limits and protocol fees
-UniversalTx event integrity
-off-chain TSS trust boundary
-Vault finalization
-CEA deployment and execution
-revert and refund flow
+Cross-chain authentication     Token accounting
+Deposit and withdrawal flows   Escrow / burn / mint / release
+Message and payload integrity  Counterpart and trusted-peer checks
+L1 / L2 / L3 architecture      Revert and refund flows
 ```
 
-For each important function, I record:
+## Main Portfolio Scopes
+
+### 1. Push Chain Gateway
+
+**Current contest-oriented review and most complete end-to-end verification exercise.**
+
+I reviewed the EVM Gateway path from the source-chain entry point to destination-side execution:
+
+```text
+User
+-> UniversalGateway.sendUniversalTx(...)
+-> transaction type detection and routing
+-> native / ERC20 deposit
+-> UniversalTx event
+-> off-chain TSS / relayer boundary
+-> Vault.finalizeUniversalTx(...)
+-> CEA.executeUniversalTx(...)
+```
+
+Scope covered:
+
+- transaction type detection and routing;
+- native and ERC20 deposits;
+- rate limits and protocol fees;
+- event and payload integrity;
+- TSS authorization and trust boundaries;
+- Vault finalization and CEA execution;
+- revert and refund flow;
+- invariant verification and suspicious-zone analysis.
+
+Repository: [Push Chain Gateway Flow Local Review](https://github.com/Keedz1Off/push-chain-gateway-flow-local-review)
+
+### 2. Arbitrum Bridge
+
+Function-by-function review of L1 to L2 deposits and L2 to L1 withdrawals.
+
+Scope covered:
+
+- escrow and token accounting;
+- retryable tickets;
+- address aliasing;
+- gateway authentication;
+- token mapping;
+- mint and release accounting;
+- simplified Foundry PoC practice.
+
+Repository: [Arbitrum Bridge Flow Local Review](https://github.com/Keedz1Off/arbitrum-bridge-flow-local-review)
+
+### 3. Optimism Bridge
+
+Review of Standard Bridge and messenger-based cross-domain execution.
+
+Scope covered:
+
+- L1/L2 deposit and withdrawal flows;
+- messenger authentication;
+- counterpart bridge verification;
+- token-pair validation;
+- escrow, burn, mint, and release logic;
+- finalization boundaries.
+
+Repository: [Optimism Bridge Flow Local Review](https://github.com/Keedz1Off/optimism-bridge-flow-local-review)
+
+### 4. LayerZero OFT
+
+Review of omnichain token transfer flow and trusted messaging assumptions.
+
+Scope covered:
+
+- send and receive flows;
+- debit and credit accounting;
+- burn and mint behavior;
+- payload encoding and decoding;
+- enforced options and execution gas;
+- endpoint delivery and trusted peers;
+- compose execution;
+- exploit-lab and PoC practice.
+
+Repository: [LayerZero OFT Flow Local Review](https://github.com/Keedz1Off/layerzero-oft-flow-local-review)
+
+## Supporting Architecture Studies
+
+These repositories support the primary reviews by showing how bridge assumptions change across forks and layered systems.
+
+### Arbitrum L3
+
+L2 to L3 bridge architecture, retryable tickets, aliasing, and L3-specific trust assumptions.
+
+Repository: [Arbitrum L3 Bridge Flow Local Review](https://github.com/Keedz1Off/arbitrum-l3-bridge-flow-local-review)
+
+### Sky / DAI Bridge Fork
+
+Optimism-based bridge fork covering escrow, token registration, withdrawal limits, governance, and administrative controls.
+
+Repository: [Sky / DAI Fork Local Review](https://github.com/Keedz1Off/Keedz1Off-sky-dai-fork-local-review)
+
+## In Progress
+
+### ZKsync Bridge
+
+I am studying Bridgehub, asset routing, shared bridge architecture, deposit finalization, asset handlers, and proof-based withdrawal assumptions.
+
+Repository: [ZKsync Bridge Flow Local Review](https://github.com/Keedz1Off/zksync-bridge-flow-local-review--in-progress-)
+
+## Break Think
+
+The most important part of my practice is the **Break Think** analysis.
+
+For each important function, I use this structure:
 
 ```text
 Invariant
@@ -32,51 +131,42 @@ Invariant
 -> Protection / Check
 -> Status
 -> My reasoning
+-> Consequence if broken
 ```
 
-This is the most complete end-to-end verification exercise currently included in my portfolio.
-
-## Primary Security Reviews
-
-### Arbitrum
-
-Deposit and withdrawal flows, escrow, retryable tickets, address aliasing, gateway authentication, token mapping, mint/release accounting, and simplified Foundry PoC practice.
-
-### Optimism
-
-Standard Bridge deposit and withdrawal flows, messenger authentication, counterpart verification, token accounting, burn/mint logic, and finalization.
-
-### LayerZero OFT
-
-Send and receive flows, debit/credit accounting, payload encoding, enforced options, endpoint delivery, trusted peers, compose execution, and exploit-lab practice.
-
-## Supporting Architecture Studies
-
-### Arbitrum L3
-
-An additional architecture study of L2-to-L3 bridge flows, retryable tickets, and L3-specific trust assumptions.
-
-### Sky / DAI Bridge Fork
-
-An additional study of an Optimism-based bridge fork, including escrow, token registration, withdrawal limits, and governance-controlled functions.
-
-These repositories support the main portfolio by showing how bridge assumptions change across forks and layered architectures.
-
-## Break Think
-
-The most important part of my portfolio is the Break Think files.
-
-In these files, I practice identifying invariants and analyzing what may happen if they break. I then verify each invariant against the relevant functions instead of treating AI-generated invariant lists as findings.
+The objective is not only to generate a list of possible invariants. I verify each invariant against the actual execution path, separate protected behavior from suspicious behavior, and use a PoC when code-level evidence is required.
 
 ## Review Method
 
 ```text
 Understand the architecture
 -> Trace funds and data
+-> Identify trust boundaries
 -> Define invariants
 -> Verify protections in code
 -> Isolate suspicious behavior
 -> Prove or reject it with a PoC
+-> Write the finding clearly
 ```
 
-Portfolio repositories: https://github.com/Keedz1Off
+## What I Track
+
+| Area | Questions |
+| --- | --- |
+| Authentication | Who can trigger finalization? Is the messenger, endpoint, TSS, or counterpart verified? |
+| Accounting | Does the deposited, escrowed, burned, minted, credited, or released amount remain consistent? |
+| Token mapping | Does the local token map to the intended remote token? |
+| Recipient | Is the intended recipient preserved through encoding, transport, and finalization? |
+| Payload | Does decoded calldata exactly match what was encoded on the source chain? |
+| Replay protection | Can the same message, transaction ID, or withdrawal be executed twice? |
+| Failure handling | Where do funds go when message delivery or destination execution fails? |
+
+## Current Level
+
+I am building practical experience through local reviews, public contest scopes, simplified Foundry tests, and invariant-based analysis. These repositories are educational portfolio projects and independent security reviews, not official audits of production deployments.
+
+## Contact
+
+- GitHub: [Keedz1Off](https://github.com/Keedz1Off)
+- Telegram: [@ETHkeedz1](https://t.me/ETHkeedz1)
+- Email: [keedzyone@gmail.com](mailto:keedzyone@gmail.com)
