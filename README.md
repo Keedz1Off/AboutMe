@@ -2,7 +2,7 @@
 
 ![Cross-chain bridge security portfolio](assets/bridge-security-portfolio-banner.png)
 
-I am a junior smart contract security researcher focused on **bridge security, cross-chain message flows, and L1/L2 architecture**.
+I am a junior smart contract security researcher focused on **bridge security, cross-chain message flows, L1/L2 architecture, and AI-assisted security workflows**.
 
 I trace complete protocol flows, define security invariants, verify their protections directly in code, and prepare PoC ideas for suspicious behavior. I am currently looking for a junior role, internship, contest collaboration, or an opportunity to contribute to a security team.
 
@@ -17,7 +17,13 @@ L1 / L2 / L3 architecture      Revert and refund flows
 
 ## Main Portfolio Scopes
 
-### 1. Push Chain Gateway
+### 1. Solidity Audit Agent
+
+An evidence-first AI-agent workflow for smart contract review. I built a deterministic evidence gate and agent instructions that separate a plausible hypothesis from a report-ready finding. The workflow records the target commit and scope, traces external-actor reachability, requires normal and controlled-violation tests, and checks deployment configuration and concrete impact. The included examples are synthetic and intentionally fail the gate; they do not claim a real vulnerability.
+
+Repository: [Solidity Audit Agent](https://github.com/Keedz1Off/solidity-audit-agent)
+
+### 2. Push Chain Gateway
 
 **Current contest-oriented review and most complete end-to-end verification exercise.**
 
@@ -47,7 +53,7 @@ Scope covered:
 
 Repository: [Push Chain Gateway Flow Local Review](https://github.com/Keedz1Off/push-chain-gateway-flow-local-review)
 
-### 2. Arbitrum Bridge
+### 3. Arbitrum Bridge
 
 Function-by-function review of L1 to L2 deposits and L2 to L1 withdrawals.
 
@@ -63,7 +69,7 @@ Scope covered:
 
 Repository: [Arbitrum Bridge Flow Local Review](https://github.com/Keedz1Off/arbitrum-bridge-flow-local-review)
 
-### 3. Optimism Bridge
+### 4. Optimism Bridge
 
 Review of Standard Bridge and messenger-based cross-domain execution.
 
@@ -78,7 +84,7 @@ Scope covered:
 
 Repository: [Optimism Bridge Flow Local Review](https://github.com/Keedz1Off/optimism-bridge-flow-local-review)
 
-### 4. LayerZero OFT
+### 5. LayerZero OFT
 
 Review of omnichain token transfer flow and trusted messaging assumptions.
 
