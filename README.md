@@ -1,8 +1,10 @@
-# Stefan | Smart Contract Security Researcher & AI Agents for Security
+# Stefan | Smart Contract & AI Agent Security
 
 ![Cross-chain bridge security portfolio](assets/bridge-security-portfolio-banner.png)
 
 I am a junior smart contract security researcher focused on **bridge security, cross-chain message flows, and L1/L2 architecture**. I also build **AI agents for security research**: workflows that trace code paths, organize evidence, and check whether a suspected issue is reproducible before it becomes a finding.
+
+I also study **AI agent security** through an OWASP-mapped defensive lab: tool permissions, data access boundaries, output handling, and resource limits. My testing direction is **fuzzing and security invariants**; the current AI lab includes reproducible randomized policy tests.
 
 I trace complete protocol flows, define security invariants, verify their protections directly in code, and prepare PoC ideas for suspicious behavior. I am currently looking for a junior role, internship, contest collaboration, or an opportunity to contribute to a security team.
 
@@ -13,8 +15,17 @@ Cross-chain authentication     Token accounting
 Deposit and withdrawal flows   Escrow / burn / mint / release
 Message and payload integrity  Counterpart and trusted-peer checks
 L1 / L2 / L3 architecture      Revert and refund flows
-AI agents for security         Evidence and reproducibility checks
+AI agent security              OWASP LLM risks and tool boundaries
+Fuzzing and invariants          Evidence and reproducibility checks
 ```
+
+## AI Agent Security Lab
+
+A practical defensive lab mapped to **OWASP Top 10 for LLM Applications 2025**. The scope covers application-owned tool permissions, document-level authorization, HTML text output encoding, and per-session action limits. Each implemented control has a failure-mode explanation, Python code, and regression tests. The suite includes 2,000 seeded randomized proposals to check policy invariants.
+
+This is a synthetic learning environment with no live targets or model integration. It demonstrates specific controls, not complete OWASP coverage or a discovered production vulnerability. Fuzzing is my main planned testing direction; the current harness is bounded randomized testing.
+
+Repository: [AI Agent Security Lab](https://github.com/Keedz1Off/ai-agent-security-lab)
 
 ## Main Portfolio Scopes
 
