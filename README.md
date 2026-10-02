@@ -1,8 +1,8 @@
-# Stefan | Smart Contract Security Researcher
+# Stefan | Smart Contract Security Researcher & AI Agents for Security
 
 ![Cross-chain bridge security portfolio](assets/bridge-security-portfolio-banner.png)
 
-I am a junior smart contract security researcher focused on **bridge security, cross-chain message flows, L1/L2 architecture, and AI-assisted security workflows**.
+I am a junior smart contract security researcher focused on **bridge security, cross-chain message flows, and L1/L2 architecture**. I also build **AI agents for security research**: workflows that trace code paths, organize evidence, and check whether a suspected issue is reproducible before it becomes a finding.
 
 I trace complete protocol flows, define security invariants, verify their protections directly in code, and prepare PoC ideas for suspicious behavior. I am currently looking for a junior role, internship, contest collaboration, or an opportunity to contribute to a security team.
 
@@ -13,6 +13,7 @@ Cross-chain authentication     Token accounting
 Deposit and withdrawal flows   Escrow / burn / mint / release
 Message and payload integrity  Counterpart and trusted-peer checks
 L1 / L2 / L3 architecture      Revert and refund flows
+AI agents for security         Evidence and reproducibility checks
 ```
 
 ## Main Portfolio Scopes
