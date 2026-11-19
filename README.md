@@ -32,6 +32,12 @@ Reviewed authentication, OAuth token lifecycle, shared storage, session behavior
 
 A defensive Python lab covering tool permissions, document-level access, HTML text encoding, and action limits. Includes deterministic tests and seeded randomized policy checks, alongside OWASP-mapped learning examples. Uses synthetic data without a live LLM or external services.
 
+### AppSec boundary workflow
+
+A synthetic FastAPI notes lab that links registered routes to a test matrix before pytest runs. The hosted CI run passed **14 checks** for ownership, input validation and token revocation. Semgrep scanned **9 Python files** with one local rule.
+
+The manual CD demo packages the test reports with the commit SHA and checksum. [GitHub Actions (private repository)](https://github.com/Keedz1Off/appsec-boundary-workflow/actions/workflows/appsec.yml)
+
 ## Current research focus
 
 - Agent-to-tool trust boundaries and application-enforced permissions.
