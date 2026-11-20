@@ -12,17 +12,20 @@ My background is in Web3 security, including smart-contract permissions, cross-c
 
 ## AppSec boundary workflow
 
-My own testing pipeline uses a synthetic FastAPI notes application. Its matrix describes who is making a request, which action they try, and what should happen. A catalog links the registered API routes to that matrix.
+My own testing pipeline uses a synthetic FastAPI notes application. Its matrices describe who is making a request, which action they try, and what should happen. Source bindings and a route catalog link application code to the registered matrices.
 
 For example, a rejected edit must leave the other user's note unchanged. The test checks the response and the stored note together.
 
 ```mermaid
 flowchart TD
-    Start["Push, pull request or manual run"] --> Catalog["Read route catalog and boundary matrix"]
+    Start["Push, pull request or manual run"] --> Changes["Find changed Python application symbols"]
+    Changes --> Review["Validate human coverage decisions and exact code hashes"]
+    Review --> Catalog["Read source bindings, route catalog and registered matrices"]
     Catalog --> Coverage["Verify route bindings and scenario coverage"]
     Coverage --> Cases["Run all 14 pytest scenarios"]
     Cases --> Oracle["Compare response status, data and application state"]
-    Oracle --> Scan["Run one local Semgrep rule"]
+    Oracle --> Calibrate["Verify detection of two deliberate application faults"]
+    Calibrate --> Scan["Run one local Semgrep rule"]
     Scan --> Reports["Save JSON, Markdown, JUnit XML and logs"]
     Reports --> Status["Record CI pass or fail"]
     Status -->|"Passing manual run with CD demo enabled"| Delivery["Package reports, source commit and checksum"]
@@ -32,16 +35,21 @@ flowchart TD
 | --- | --- |
 | Security invariant | States the rule the application must preserve, such as keeping another user's note unchanged after a rejected edit. |
 | Boundary matrix | Records positive and negative scenarios with their expected results. |
+| Change inventory | Compares Python ASTs to find added, modified or removed functions, nested functions, classes and module code under `lab/`. |
+| Coverage decision | Binds a human review to the exact before/after code hashes and referenced matrix/scenario IDs. |
+| Source bindings | Ensures every application Python file has a binding to candidate matrices. |
 | Route catalog | Checks that the application's routes have matrix bindings and scenarios. |
 | Test scenario | Creates synthetic data and sends a request using the scenario's parameters. |
 | Test oracle | Compares the response and resulting application state with the expected outcome. |
 | Report | Preserves case results, observations, logs and the source version for review. |
 
-**The hosted run passed all 14 pytest cases.** Semgrep checked one local rule across nine Python files, including the tests. The optional manual CD demo produces a downloadable archive of the verified reports.
+**The updated hosted run passed 33 pipeline regression tests and all 14 API scenarios.** Semgrep checked one local rule across 12 Python files. The optional manual CD demo produces a downloadable archive of the verified reports.
 
-Local calibration also runs two deliberately faulty versions. One returns HTTP 404 after changing the note. The state assertion detects the change.
+Hosted CI also checks two deliberately faulty versions. One returns HTTP 404 after changing the note. The state assertion detects the change. These are fault calibrations of the same 14 scenarios.
 
-Every hosted run currently executes the full matrix. The coverage check works on registered API routes. Selecting tests from changed functions remains planned.
+When application logic changes, a human records whether existing scenarios are sufficient, a new scenario was added, a new matrix was added, or the change has no security effect. Missing decisions, stale hashes and invented scenario references fail the change review. Claims of a new scenario or matrix must cite IDs absent from the base registry. Newly registered matrices are loaded by the runtime runner.
+
+This gate validates review records and executable references. A person still judges whether coverage is meaningful. Every hosted run executes all registered scenarios. Selecting a smaller test set from changed functions remains planned.
 
 [GitHub Actions in the private lab](https://github.com/Keedz1Off/appsec-boundary-workflow/actions/workflows/appsec.yml) · [Public LangGraph pipeline walkthrough](https://github.com/Keedz1Off/langgraph-pipeline-case-study#testing-pipeline)
 
