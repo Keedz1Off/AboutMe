@@ -1,18 +1,18 @@
 # Stefan Somin
 
-**Application Security and AI Agent Security**
+**DevSecOps & AI Agent Security**
 
 ![Pixel-art cat with a red strawberry studying security reports in a monochrome room](assets/security-research-cat.png)
 
-I build security tests for APIs, agent workflows and MCP integrations. I follow a request or action through the application, define the rule it must obey, and check the result against responses, logs and stored state.
+I build security automation for CI pipelines and test AI agent workflows and MCP integrations. My projects connect code changes to security rules, executable scenarios and recorded evidence in GitHub Actions.
 
-My background is in Web3 security, including smart-contract permissions, cross-chain messages and accounting invariants. My current projects focus on AppSec testing and the systems behind AI agents.
+My current focus is DevSecOps and AI agent security. My background is in Web3 security, including smart-contract permissions, cross-chain messages and accounting invariants.
 
 [GitHub](https://github.com/Keedz1Off) · [Telegram](https://t.me/ETHkeedz1) · [Email](mailto:keedzyone@gmail.com)
 
 ## AppSec boundary workflow
 
-My own testing pipeline uses a synthetic FastAPI notes application. Its matrices describe who is making a request, which action they try, and what should happen. Source bindings and a route catalog link application code to the registered matrices.
+This is my security CI pipeline, built around a synthetic FastAPI notes application. It combines application security tests with automated change-review gates and evidence collection. Its matrices describe who is making a request, which action they try, and what should happen. Source bindings and a route catalog link application code to the registered matrices.
 
 For example, a rejected edit must leave the other user's note unchanged. The test checks the response and the stored note together.
 
@@ -53,6 +53,18 @@ This gate validates review records and executable references. A person still jud
 
 [GitHub Actions in the private lab](https://github.com/Keedz1Off/appsec-boundary-workflow/actions/workflows/appsec.yml) · [Public LangGraph pipeline walkthrough](https://github.com/Keedz1Off/langgraph-pipeline-case-study#testing-pipeline)
 
+## DevSecOps focus
+
+| Area | What my projects demonstrate |
+| --- | --- |
+| CI security gates | Automated checks on pushes, pull requests and manual runs, with a failed status when required reviews or checks are missing. |
+| Security rules in version control | JSON matrices, source bindings and coverage decisions tied to exact code hashes. |
+| Regression checks | Executable tests for responses and application state, with deliberate faults to check oracle sensitivity. |
+| Evidence delivery | Reports and logs saved as workflow artifacts, plus a manual bundle containing verified reports, the source commit and a checksum. |
+| Agent and MCP testing | Investigations into tool permissions, approvals, persistence, credential denial and error propagation, with explicit limits on each demonstrated result. |
+
+The current delivery demo packages verified reports. My next step is deploying a test environment and adding checks for permissions, secrets and workload isolation. The notes lab already includes a Dockerfile and local runner configuration.
+
 ## Selected investigations
 
 | Project | What I checked and recorded |
@@ -68,7 +80,7 @@ Start with a project's README. Its diagrams explain the application and testing 
 
 ## How I work
 
-I trace the application flow, identify the trust boundaries and write down the security invariants. Then I build scenarios, inspect the relevant state, investigate failed assertions and document the observed behavior.
+I trace application and agent workflows, identify trust boundaries and write down security invariants. Then I turn those rules into executable checks, integrate them into CI, investigate failures and preserve the evidence. When code changes, I review whether existing scenarios still cover the affected behavior.
 
 AI helps with code analysis, test development and drafts. I check its suggestions against code and measurements. Reports include the tested revision, controls, results and limits.
 
@@ -88,4 +100,4 @@ Earlier work covers bridge authorization, message flows and accounting rules.
 
 ## Work with me
 
-I am based in Lleida, Spain, and open to AI security roles, internships and scoped contract work. I can walk through the pipeline, test code and recorded results during an interview.
+I am based in Lleida, Spain, and open to DevSecOps and AI security roles, internships and scoped contract work. I can walk through my CI workflow, security tests, change-review gates and recorded results during an interview.
