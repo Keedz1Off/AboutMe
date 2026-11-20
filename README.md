@@ -88,4 +88,4 @@ Earlier work covers bridge authorization, message flows and accounting rules.
 
 ## Work with me
 
-I am based in Lleida, Spain, and open to junior AppSec and AI security roles, internships and scoped contract work. I can walk through the pipeline, test code and recorded results during an interview.
+I am based in Lleida, Spain, and open to AI security roles, internships and scoped contract work. I can walk through the pipeline, test code and recorded results during an interview.
